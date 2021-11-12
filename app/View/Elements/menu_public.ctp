@@ -55,7 +55,7 @@
                 <div id="ChartStates" style="width: 511px; height: 350px;"></div>
             </div>
             <div class=" col s12 m5 offset-m3">
-                <h6 class="grey-text text-darken-1 center">&nbsp; &nbsp; &nbsp; &nbsp;CASOS INFECTADOS DE LOS ULTMOS 2 MESES EN CENTROAMERICA</h6>
+                <h6 class="grey-text text-darken-1 center"> &nbsp; &nbsp; &nbsp;CASOS INFECTADOS DE LOS ULTMOS 2 MESES EN CENTROAMERICA</h6>
                 <div id="ChartPrueba2" style="width: 750px; height: 500px;"></div>
             </div>
           
@@ -63,21 +63,25 @@
             
            <div class=" col s12 m5 offset-m2">
                 <div id="ChartAges" style="width: 511px; height: 350px;"></div>
+                &nbsp;
             </div> 
 
             <div class=" col s12 m12 offset-m2">
                 <div id="lineChartdepartments" style="width: 1000px; height: 600px;"></div>
+                <hr>
+                &nbsp;
             </div> 
 
 
             <!-- AQUI ESTAN LAS GRAFICAS QUE YO AGREGUE -->
+            <hr>
             <div class=" col s12 m4 offset-m2">
             <h6 class="grey-text text-darken-1 center">MUERTES ASINTOMATICOS EN 1 AÑO</h6>
             <div id="MAsintomaticos" style="width: 510px; height: 500px;"></div>
             </div> 
 
 
-            <div class=" col s12 m3 offset-m2">
+            <div class=" col s12 m4 offset-m2">
             <center><h6 class="grey-text text-darken-1 center">NUEVOS CASOS ASINTOMATICOS EN 1 AÑO</h6></center>
             <div id="cifras" style="width: 550px; height: 500px;"></div>
             </div> 
