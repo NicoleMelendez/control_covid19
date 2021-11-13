@@ -311,7 +311,7 @@
           var data = google.visualization.arrayToDataTable([
             ['location','Asintomaticos'],
             <?php
-            $sql ="SELECT location, SUM(new_cases_smoothed) AS ASINTOMATICOS FROM `centro_america` WHERE date<= DATE_SUB(NOW(), INTERVAL 1 YEAR) GROUP BY location";
+            $sql ="SELECT location, SUM(new_cases_smoothed) AS ASINTOMATICOS FROM `centro_america` WHERE date<= DATE_SUB(NOW(), INTERVAL 6 MONTH) GROUP BY location";
             $fire = mysqli_query($conexion,$sql);
             while ($result = mysqli_fetch_assoc($fire)) {
               echo"['".$result['location']."',".$result['ASINTOMATICOS']."],";
@@ -336,8 +336,6 @@
 
   <!-- ULTIMA GRAFICA -->
 
-
-
 <script type="text/javascript">
 google.charts.load('current', {packages: ['corechart', 'bar']});
 google.charts.setOnLoadCallback(drawBasic);
@@ -347,7 +345,7 @@ function drawBasic() {
       var data = google.visualization.arrayToDataTable([
         ['location','Decesos'],
         <?php
-            $sql ="SELECT location, SUM(new_deaths_smoothed) AS DEATHS FROM `centro_america` WHERE date<= DATE_SUB(NOW(), INTERVAL 1 YEAR) GROUP BY location";
+            $sql ="SELECT location, SUM(total_deaths) AS DEATHS FROM `centro_america` WHERE date> DATE_SUB(NOW(), INTERVAL '1-8' YEAR_MONTH) GROUP BY location";
             $fire = mysqli_query($conexion,$sql);
             while ($result = mysqli_fetch_assoc($fire)) {
               echo"['".$result['location']."',".$result['DEATHS']."],";
@@ -357,7 +355,7 @@ function drawBasic() {
       ]);
 
       var options = {
-        title: 'Decesos en los dos últimos años',
+        title: 'Decesos en el último año y 8 meses',
         colors: ['#1ED760'],
         chartArea: {width: '50%'},
         hAxis: {
@@ -374,3 +372,33 @@ function drawBasic() {
       chart.draw(data, options);
     }
     </script>
+
+    <!-- GRAFICA DE CASOS NUEVOS
+    
+  <script type="text/javascript">
+    google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['location','NuevosCasos'],
+            <?php
+            $sql ="SELECT location, SUM(new_cases) AS NEWCASES FROM `centro_america` WHERE Location = 'El Salvador' AND date> DATE_SUB(NOW(), INTERVAL 1 YEAR) GROUP BY location ";
+            $fire = mysqli_query($conexion,$sql);
+            while ($result = mysqli_fetch_assoc($fire)) {
+              echo"['".$result['location']."',".$result['NEWCASES']."],";
+            }
+            ?>
+       
+      ]);
+
+        var options = {
+          title: 'Company Performance',
+          hAxis: {title: 'Year',  titleTextStyle: {color: '#333'}},
+          vAxis: {minValue: 0}
+        };
+
+        var chart = new google.visualization.AreaChart(document.getElementById('ncasesnacional'));
+        chart.draw(data, options);
+      }
+  </script> -->
